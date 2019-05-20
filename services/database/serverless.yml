@@ -25,6 +25,10 @@ resources:
             AttributeType: S
           - AttributeName: sk
             AttributeType: S
+          - AttributeName: gsi1_pk
+            AttributeType: S
+          - AttributeName: gsi1_sk
+            AttributeType: S
         KeySchema:
           - AttributeName: pk
             KeyType: HASH
@@ -40,6 +44,8 @@ resources:
               KeyType: HASH
             - AttributeName: gsi1_sk
               KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
           ProvisionedThroughput:
             ReadCapacityUnits: ${self:custom.tableThroughput}
             WriteCapacityUnits: ${self:custom.tableThroughput}
