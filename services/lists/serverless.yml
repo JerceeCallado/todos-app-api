@@ -92,7 +92,7 @@ functions:
   #         path: lists/{userId}/{listId}
   #         method: delete
   #         cors: true
-  autorizer: aws_iam
+  #         autorizer: aws_iam
 
 resources:
   Resources:
