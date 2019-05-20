@@ -39,53 +39,53 @@ provider:
       'Fn::ImportValue': ${self:custom.stage}-ApiGatewayRestApiRootResourceId
 
 functions:
-  create:
-    handler: src/create.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: todos/{listId}
-          method: post
-          cors: true
-          authorizer: aws_iam
-  get:
-    handler: src/get.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: todos/{listId}/{todoId}
-          method: get
-          cors: true
-          authorizer: aws_iam
-  index:
-    handler: src/index.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: todos/{listId}
-          method: get
-          cors: true
-          authorizer: aws_iam
-  update:
-    handler: src/update.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: todos/{listId}/{todoId}
-          method: put
-          cors: true
-          authorizer: aws_iam
-  delete:
-    handler: src/delete.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: todos/{listId}/{todoId}
-          method: delete
-          cors: true
-          authorizer: aws_iam
+  # create:
+  #   handler: src/create.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: todos/{listId}
+  #         method: post
+  #         cors: true
+  #         authorizer: aws_iam
+  # get:
+  #   handler: src/get.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: todos/{listId}/{todoId}
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
+  # index:
+  #   handler: src/index.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: todos/{listId}
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
+  # update:
+  #   handler: src/update.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: todos/{listId}/{todoId}
+  #         method: put
+  #         cors: true
+  #         authorizer: aws_iam
+  # delete:
+  #   handler: src/delete.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: todos/{listId}/{todoId}
+  #         method: delete
+  #         cors: true
+  #         authorizer: aws_iam

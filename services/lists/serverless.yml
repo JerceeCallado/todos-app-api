@@ -33,66 +33,66 @@ provider:
         - 'Fn::ImportValue': TodosTableArn-${self:custom.stage}
 
 functions:
-  create:
-    handler: src/create.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{userId}
-          method: post
-          cors: true
-          autorizer: aws_iam
-  read:
-    handler: src/read.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{userId}/{listId}
-          method: get
-          cors: true
-          autorizer: aws_iam
-  indexListsOfUser:
-    handler: src/indexListsOfUser.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{userId}
-          method: get
-          cors: true
-          autorizer: aws_iam
-  indexUsersOfList:
-    handler: src/indexUsersOfList.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{listId}
-          method: get
-          cors: true
-          autorizer: aws_iam
-  update:
-    handler: src/update.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{userId}/{listId}
-          method: put
-          cors: true
-          autorizer: aws_iam
-  delete:
-    handler: src/delete.main
-    environment:
-      tablename: ${self:provider.environment.tableName}
-    events:
-      - http:
-          path: lists/{userId}/{listId}
-          method: delete
-          cors: true
-          autorizer: aws_iam
+  # create:
+  #   handler: src/create.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{userId}
+  #         method: post
+  #         cors: true
+  #         autorizer: aws_iam
+  # read:
+  #   handler: src/read.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{userId}/{listId}
+  #         method: get
+  #         cors: true
+  #         autorizer: aws_iam
+  # indexListsOfUser:
+  #   handler: src/indexListsOfUser.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{userId}
+  #         method: get
+  #         cors: true
+  #         autorizer: aws_iam
+  # indexUsersOfList:
+  #   handler: src/indexUsersOfList.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{listId}
+  #         method: get
+  #         cors: true
+  #         autorizer: aws_iam
+  # update:
+  #   handler: src/update.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{userId}/{listId}
+  #         method: put
+  #         cors: true
+  #         autorizer: aws_iam
+  # delete:
+  #   handler: src/delete.main
+  #   environment:
+  #     tablename: ${self:provider.environment.tableName}
+  #   events:
+  #     - http:
+  #         path: lists/{userId}/{listId}
+  #         method: delete
+  #         cors: true
+  autorizer: aws_iam
 
 resources:
   Resources:
