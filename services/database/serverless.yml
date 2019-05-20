@@ -38,17 +38,17 @@ resources:
           ReadCapacityUnits: ${self:custom.tableThroughput}
           WriteCapacityUnits: ${self:custom.tableThroughput}
         GlobalSecondaryIndexes:
-          IndexName: gsi1
-          KeySchema:
-            - AttributeName: gsi1_pk
-              KeyType: HASH
-            - AttributeName: gsi1_sk
-              KeyType: RANGE
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: ${self:custom.tableThroughput}
-            WriteCapacityUnits: ${self:custom.tableThroughput}
+          - IndexName: gsi1
+            KeySchema:
+              - AttributeName: gsi1_pk
+                KeyType: HASH
+              - AttributeName: gsi1_sk
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: ${self:custom.tableThroughput}
+              WriteCapacityUnits: ${self:custom.tableThroughput}
 
   Outputs:
     NotesTableArn:
