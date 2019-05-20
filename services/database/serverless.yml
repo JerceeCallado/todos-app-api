@@ -1,0 +1,54 @@
+service: todos-app-database
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  tableName: todos-${self:custom.stage}
+  tableThroughputs:
+    prod: 1
+    default: 1
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+
+resources:
+  Resources:
+    NotesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+          - AttributeName: sk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+          - AttributeName: sk
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: ${self:custom.tableThroughput}
+          WriteCapacityUnits: ${self:custom.tableThroughput}
+        GlobalSecondaryIndexes:
+          IndexName: gsi1
+          keySchema:
+            - AttributeName: gsi1_pk
+              KeyType: HASH
+            - AttributeName: gsi1_sk
+              KeyType: RANGE
+          ProvisionedThroughput:
+            ReadCapacityUnits: ${self:custom.tableThroughput}
+            WriteCapacityUnits: ${self:custom.tableThroughput}
+
+  Outputs:
+    NotesTableArn:
+      Value:
+        Fn::GetAtt:
+          - TodosTable
+          - Arn
+      Export:
+        Name: TodosTableArn-${self:custom.stage}
