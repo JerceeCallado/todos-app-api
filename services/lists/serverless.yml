@@ -53,13 +53,23 @@ functions:
           method: get
           cors: true
           autorizer: aws_iam
-  index:
-    handler: src/index.main
+  indexListsOfUser:
+    handler: src/indexListsOfUser.main
     environment:
       tablename: ${self:provider.environment.tableName}
     events:
       - http:
           path: lists/{userId}
+          method: post
+          cors: true
+          autorizer: aws_iam
+  indexUsersOfList:
+    handler: src/indexUsersOfList.main
+    environment:
+      tablename: ${self:provider.environment.tableName}
+    events:
+      - http:
+          path: lists/{listId}
           method: post
           cors: true
           autorizer: aws_iam
