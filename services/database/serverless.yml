@@ -35,7 +35,7 @@ resources:
           WriteCapacityUnits: ${self:custom.tableThroughput}
         GlobalSecondaryIndexes:
           IndexName: gsi1
-          keySchema:
+          KeySchema:
             - AttributeName: gsi1_pk
               KeyType: HASH
             - AttributeName: gsi1_sk
