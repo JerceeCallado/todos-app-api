@@ -16,7 +16,7 @@ provider:
 
 resources:
   Resources:
-    NotesTable:
+    TodosTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: ${self:custom.tableName}
