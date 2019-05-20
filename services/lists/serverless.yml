@@ -39,7 +39,7 @@ functions:
       tablename: ${self:provider.environment.tableName}
     events:
       - http:
-          path: lists/create
+          path: lists/{userId}
           method: post
           cors: true
           autorizer: aws_iam
@@ -60,7 +60,7 @@ functions:
     events:
       - http:
           path: lists/{userId}
-          method: post
+          method: get
           cors: true
           autorizer: aws_iam
   indexUsersOfList:
@@ -70,7 +70,7 @@ functions:
     events:
       - http:
           path: lists/{listId}
-          method: post
+          method: get
           cors: true
           autorizer: aws_iam
   update:
